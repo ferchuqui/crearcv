@@ -16,3 +16,10 @@ body {
     border: 1px solid #dee2e6;
     margin-right: 20px;
 }
+
+.education-field {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}

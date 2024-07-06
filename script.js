@@ -1,3 +1,5 @@
+let educationCount = 1;
+
 document.getElementById("cv-form").addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -26,10 +28,18 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
     document.getElementById("marital-status").value;
   document.getElementById("output-experience").textContent =
     document.getElementById("experience").value;
-  document.getElementById("output-education").textContent =
-    document.getElementById("education").value;
   document.getElementById("output-license").textContent =
     document.getElementById("license").value;
+
+  const educationOutput = document.getElementById("output-education");
+  educationOutput.innerHTML = "<p><strong>Educación:</strong></p>";
+  for (let i = 1; i <= educationCount; i++) {
+    const type = document.getElementById(`education-type-${i}`).value;
+    const period = document.getElementById(`education-period-${i}`).value;
+    const title = document.getElementById(`education-title-${i}`).value;
+    const educationHtml = `<p>${type}: ${title} (${period})</p>`;
+    educationOutput.innerHTML += educationHtml;
+  }
 
   const photoInput = document.getElementById("photo");
   if (photoInput.files && photoInput.files[0]) {
@@ -101,19 +111,56 @@ document.getElementById("save-pdf").addEventListener("click", function () {
     10,
     130
   );
-  doc.text(`Educación: ${document.getElementById("education").value}`, 10, 140);
+
+  let educationY = 140;
+  for (let i = 1; i <= educationCount; i++) {
+    const type = document.getElementById(`education-type-${i}`).value;
+    const period = document.getElementById(`education-period-${i}`).value;
+    const title = document.getElementById(`education-title-${i}`).value;
+    doc.text(`Educación ${i}: ${type}, ${title} (${period})`, 10, educationY);
+    educationY += 10;
+  }
+
   doc.text(
     `Posee Licencia de Conducir: ${document.getElementById("license").value}`,
     10,
-    150
+    educationY
   );
 
   const photo = document.getElementById("output-photo");
   if (photo.src) {
-    doc.addImage(photo.src, "JPEG", 10, 160, 50, 50);
+    doc.addImage(photo.src, "JPEG", 10, educationY + 10, 50, 50);
   }
 
   doc.save(fileName);
+});
+
+document.getElementById("add-education").addEventListener("click", function () {
+  educationCount++;
+  const educationFields = document.getElementById("education-fields");
+  const newField = document.createElement("div");
+  newField.classList.add("education-field");
+  newField.innerHTML = `
+        <div class="form-group">
+            <label for="education-type-${educationCount}">Tipo</label>
+            <select class="form-control" id="education-type-${educationCount}" required>
+                <option value="" disabled selected>Seleccione el tipo de educación</option>
+                <option value="Secundario">Secundario</option>
+                <option value="Terciario">Terciario</option>
+                <option value="Universitario">Universitario</option>
+                <option value="Curso Particular">Curso Particular</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="education-period-${educationCount}">Período</label>
+            <input type="text" class="form-control" id="education-period-${educationCount}" required>
+        </div>
+        <div class="form-group">
+            <label for="education-title-${educationCount}">Título Logrado</label>
+            <input type="text" class="form-control" id="education-title-${educationCount}" required>
+        </div>
+    `;
+  educationFields.appendChild(newField);
 });
 
 function calculateAge(birthdate) {

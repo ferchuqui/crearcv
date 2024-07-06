@@ -65,10 +65,30 @@
                 <label for="experience">Experiencia Laboral</label>
                 <textarea class="form-control" id="experience" rows="3" required></textarea>
             </div>
-            <div class="form-group">
-                <label for="education">Educación</label>
-                <textarea class="form-control" id="education" rows="3" required></textarea>
+            <div class="form-group" id="education-fields">
+                <label>Educación</label>
+                <div class="education-field">
+                    <div class="form-group">
+                        <label for="education-type-1">Tipo</label>
+                        <select class="form-control" id="education-type-1" required>
+                            <option value="" disabled selected>Seleccione el tipo de educación</option>
+                            <option value="Secundario">Secundario</option>
+                            <option value="Terciario">Terciario</option>
+                            <option value="Universitario">Universitario</option>
+                            <option value="Curso Particular">Curso Particular</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="education-period-1">Período</label>
+                        <input type="text" class="form-control" id="education-period-1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="education-title-1">Título Logrado</label>
+                        <input type="text" class="form-control" id="education-title-1" required>
+                    </div>
+                </div>
             </div>
+            <button type="button" class="btn btn-secondary" id="add-education">Agregar Educación</button>
             <div class="form-group">
                 <label for="license">Posee Licencia de Conducir</label>
                 <select class="form-control" id="license" required>
@@ -102,7 +122,9 @@
                     <p><strong>Teléfono:</strong> <span id="output-phone"></span></p>
                     <p><strong>Estado Civil:</strong> <span id="output-marital-status"></span></p>
                     <p><strong>Experiencia Laboral:</strong> <span id="output-experience"></span></p>
-                    <p><strong>Educación:</strong> <span id="output-education"></span></p>
+                    <div id="output-education">
+                        <p><strong>Educación:</strong></p>
+                    </div>
                     <p><strong>Posee Licencia de Conducir:</strong> <span id="output-license"></span></p>
                 </div>
             </div>
