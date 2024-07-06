@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de CV</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -123,11 +123,11 @@
             <button type="submit" class="btn btn-primary">Generar CV</button>
         </form>
         <div id="cv-output" class="mt-5 d-none">
-            <div class="d-flex">
-                <div>
+            <div class="row">
+                <div class="col-md-4 text-center">
                     <img id="output-photo" class="photo-preview" alt="Foto de perfil">
                 </div>
-                <div class="ml-3">
+                <div class="col-md-8">
                     <h2 id="cv-title" class="cv-title"></h2>
                     <p><strong>Nombre:</strong> <span id="output-first-name"></span></p>
                     <p><strong>Apellido:</strong> <span id="output-last-name"></span></p>

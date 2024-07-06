@@ -59,9 +59,10 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
     reader.onload = function (e) {
       const outputPhoto = document.getElementById("output-photo");
       outputPhoto.src = e.target.result;
-      outputPhoto.style.width = "400px";
-      outputPhoto.style.height = "400px";
+      outputPhoto.style.width = "150px";
+      outputPhoto.style.height = "150px";
       outputPhoto.style.objectFit = "cover";
+      outputPhoto.style.borderRadius = "50%";
       outputPhoto.style.border = "1px solid #dee2e6";
       outputPhoto.style.marginRight = "20px";
     };
