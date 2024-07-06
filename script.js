@@ -4,10 +4,14 @@ let experienceCount = 1;
 document.getElementById("cv-form").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  document.getElementById("output-first-name").textContent =
-    document.getElementById("first-name").value;
-  document.getElementById("output-last-name").textContent =
-    document.getElementById("last-name").value;
+  const firstName = document.getElementById("first-name").value;
+  const lastName = document.getElementById("last-name").value;
+
+  document.getElementById(
+    "cv-title"
+  ).textContent = `Curriculum Vitae de ${firstName} ${lastName}`;
+  document.getElementById("output-first-name").textContent = firstName;
+  document.getElementById("output-last-name").textContent = lastName;
   document.getElementById("output-dni").textContent =
     document.getElementById("dni").value;
   document.getElementById("output-cuit").textContent =
@@ -88,7 +92,11 @@ document.getElementById("save-pdf").addEventListener("click", function () {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.text("Curriculum Vitae", 10, 10);
+  doc.setFont("Nunito");
+  doc.setFontSize(24);
+  doc.text(`Curriculum Vitae de ${firstName} ${lastName}`, 10, 10);
+
+  doc.setFontSize(12);
   doc.text(`Nombre: ${firstName}`, 10, 20);
   doc.text(`Apellido: ${lastName}`, 10, 30);
   doc.text(`DNI: ${document.getElementById("dni").value}`, 10, 40);
