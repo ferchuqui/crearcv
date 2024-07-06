@@ -22,4 +22,12 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
+    
+}
+#output-photo {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border: 1px solid #dee2e6;
+    margin-right: 20px;
 }
