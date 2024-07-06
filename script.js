@@ -7,9 +7,7 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
   const firstName = document.getElementById("first-name").value;
   const lastName = document.getElementById("last-name").value;
 
-  document.getElementById(
-    "cv-title"
-  ).textContent = `Curriculum Vitae de ${firstName} ${lastName}`;
+  document.getElementById("cv-title").textContent = `${firstName} ${lastName}`;
   document.getElementById("output-first-name").textContent = firstName;
   document.getElementById("output-last-name").textContent = lastName;
   document.getElementById("output-dni").textContent =
@@ -59,7 +57,13 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
   if (photoInput.files && photoInput.files[0]) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      document.getElementById("output-photo").src = e.target.result;
+      const outputPhoto = document.getElementById("output-photo");
+      outputPhoto.src = e.target.result;
+      outputPhoto.style.width = "400px";
+      outputPhoto.style.height = "400px";
+      outputPhoto.style.objectFit = "cover";
+      outputPhoto.style.border = "1px solid #dee2e6";
+      outputPhoto.style.marginRight = "20px";
     };
     reader.readAsDataURL(photoInput.files[0]);
   }
@@ -94,7 +98,7 @@ document.getElementById("save-pdf").addEventListener("click", function () {
 
   doc.setFont("Nunito");
   doc.setFontSize(24);
-  doc.text(`Curriculum Vitae de ${firstName} ${lastName}`, 10, 10);
+  doc.text(`${firstName} ${lastName}`, 10, 10);
 
   doc.setFontSize(12);
   doc.text(`Nombre: ${firstName}`, 10, 20);
