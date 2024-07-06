@@ -1,4 +1,5 @@
 let educationCount = 1;
+let experienceCount = 1;
 
 document.getElementById("cv-form").addEventListener("submit", function (event) {
   event.preventDefault();
@@ -26,10 +27,19 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
     document.getElementById("phone").value;
   document.getElementById("output-marital-status").textContent =
     document.getElementById("marital-status").value;
-  document.getElementById("output-experience").textContent =
-    document.getElementById("experience").value;
   document.getElementById("output-license").textContent =
     document.getElementById("license").value;
+
+  const experienceOutput = document.getElementById("output-experience");
+  experienceOutput.innerHTML = "<p><strong>Experiencia Laboral:</strong></p>";
+  for (let i = 1; i <= experienceCount; i++) {
+    const period = document.getElementById(`experience-period-${i}`).value;
+    const job = document.getElementById(`experience-job-${i}`).value;
+    const tasks = document.getElementById(`experience-tasks-${i}`).value;
+    const phone = document.getElementById(`experience-phone-${i}`).value;
+    const experienceHtml = `<p>${job} (${period}): ${tasks}. Tel: ${phone}</p>`;
+    experienceOutput.innerHTML += experienceHtml;
+  }
 
   const educationOutput = document.getElementById("output-education");
   educationOutput.innerHTML = "<p><strong>Educación:</strong></p>";
@@ -106,34 +116,70 @@ document.getElementById("save-pdf").addEventListener("click", function () {
     10,
     120
   );
-  doc.text(
-    `Experiencia Laboral: ${document.getElementById("experience").value}`,
-    10,
-    130
-  );
 
-  let educationY = 140;
+  let y = 130;
+  for (let i = 1; i <= experienceCount; i++) {
+    const period = document.getElementById(`experience-period-${i}`).value;
+    const job = document.getElementById(`experience-job-${i}`).value;
+    const tasks = document.getElementById(`experience-tasks-${i}`).value;
+    const phone = document.getElementById(`experience-phone-${i}`).value;
+    doc.text(
+      `Experiencia ${i}: ${job} (${period}). Tareas: ${tasks}. Tel: ${phone}`,
+      10,
+      y
+    );
+    y += 10;
+  }
+
   for (let i = 1; i <= educationCount; i++) {
     const type = document.getElementById(`education-type-${i}`).value;
     const period = document.getElementById(`education-period-${i}`).value;
     const title = document.getElementById(`education-title-${i}`).value;
-    doc.text(`Educación ${i}: ${type}, ${title} (${period})`, 10, educationY);
-    educationY += 10;
+    doc.text(`Educación ${i}: ${type}, ${title} (${period})`, 10, y);
+    y += 10;
   }
 
   doc.text(
     `Posee Licencia de Conducir: ${document.getElementById("license").value}`,
     10,
-    educationY
+    y
   );
 
   const photo = document.getElementById("output-photo");
   if (photo.src) {
-    doc.addImage(photo.src, "JPEG", 10, educationY + 10, 50, 50);
+    doc.addImage(photo.src, "JPEG", 10, y + 10, 50, 50);
   }
 
   doc.save(fileName);
 });
+
+document
+  .getElementById("add-experience")
+  .addEventListener("click", function () {
+    experienceCount++;
+    const experienceFields = document.getElementById("experience-fields");
+    const newField = document.createElement("div");
+    newField.classList.add("experience-field");
+    newField.innerHTML = `
+        <div class="form-group">
+            <label for="experience-period-${experienceCount}">Período</label>
+            <input type="text" class="form-control" id="experience-period-${experienceCount}" required>
+        </div>
+        <div class="form-group">
+            <label for="experience-job-${experienceCount}">Nombre del Trabajo</label>
+            <input type="text" class="form-control" id="experience-job-${experienceCount}" required>
+        </div>
+        <div class="form-group">
+            <label for="experience-tasks-${experienceCount}">Tareas Realizadas</label>
+            <textarea class="form-control" id="experience-tasks-${experienceCount}" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="experience-phone-${experienceCount}">Teléfono del Empleo</label>
+            <input type="tel" class="form-control" id="experience-phone-${experienceCount}" required>
+        </div>
+    `;
+    experienceFields.appendChild(newField);
+  });
 
 document.getElementById("add-education").addEventListener("click", function () {
   educationCount++;

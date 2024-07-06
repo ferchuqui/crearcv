@@ -17,7 +17,7 @@ body {
     margin-right: 20px;
 }
 
-.education-field {
+.education-field, .experience-field {
     border: 1px solid #dee2e6;
     padding: 10px;
     margin-bottom: 10px;

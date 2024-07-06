@@ -61,10 +61,28 @@
                     <option value="Viudo">Viudo</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="experience">Experiencia Laboral</label>
-                <textarea class="form-control" id="experience" rows="3" required></textarea>
+            <div class="form-group" id="experience-fields">
+                <label>Experiencia Laboral</label>
+                <div class="experience-field">
+                    <div class="form-group">
+                        <label for="experience-period-1">Período</label>
+                        <input type="text" class="form-control" id="experience-period-1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience-job-1">Nombre del Trabajo</label>
+                        <input type="text" class="form-control" id="experience-job-1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience-tasks-1">Tareas Realizadas</label>
+                        <textarea class="form-control" id="experience-tasks-1" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience-phone-1">Teléfono del Empleo</label>
+                        <input type="tel" class="form-control" id="experience-phone-1" required>
+                    </div>
+                </div>
             </div>
+            <button type="button" class="btn btn-secondary" id="add-experience">Agregar Experiencia Laboral</button>
             <div class="form-group" id="education-fields">
                 <label>Educación</label>
                 <div class="education-field">
@@ -121,7 +139,9 @@
                     <p><strong>Correo Electrónico:</strong> <span id="output-email"></span></p>
                     <p><strong>Teléfono:</strong> <span id="output-phone"></span></p>
                     <p><strong>Estado Civil:</strong> <span id="output-marital-status"></span></p>
-                    <p><strong>Experiencia Laboral:</strong> <span id="output-experience"></span></p>
+                    <div id="output-experience">
+                        <p><strong>Experiencia Laboral:</strong></p>
+                    </div>
                     <div id="output-education">
                         <p><strong>Educación:</strong></p>
                     </div>
