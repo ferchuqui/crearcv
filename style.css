@@ -15,7 +15,7 @@ body {
     object-fit: cover;
     border-radius: 50%;
     border: 1px solid #dee2e6;
-    margin-right: 20px;
+    margin: 0 auto;
 }
 
 .education-field, .experience-field {
@@ -31,7 +31,7 @@ body {
     object-fit: cover;
     border-radius: 50%;
     border: 1px solid #dee2e6;
-    margin-right: 20px;
+    margin: 0 auto;
 }
 
 .cv-title {
@@ -39,4 +39,26 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.personal-info-box {
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.personal-info-box h3 {
+    background-color: #00aaff;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    margin: -15px -15px 10px -15px;
+}
+
+.right-column {
+    background-color: #ccc;
+    padding: 20px;
+    border-radius: 5px;
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de CV</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -39,6 +39,10 @@
                     <option value="Femenino">Femenino</option>
                     <option value="Masculino">Masculino</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="nationality">Nacionalidad</label>
+                <input type="text" class="form-control" id="nationality" required>
             </div>
             <div class="form-group">
                 <label for="address">Domicilio</label>
@@ -127,19 +131,22 @@
                 <div class="col-md-4 text-center">
                     <img id="output-photo" class="photo-preview" alt="Foto de perfil">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 right-column">
                     <h2 id="cv-title" class="cv-title"></h2>
+                    <div class="personal-info-box">
+                        <h3>Datos Personales</h3>
+                        <p><strong>Nacionalidad:</strong> <span id="output-nationality"></span></p>
+                        <p><strong>Estado Civil:</strong> <span id="output-marital-status"></span></p>
+                        <p><strong>Fecha de Nacimiento:</strong> <span id="output-birthdate"></span></p>
+                        <p><strong>Edad:</strong> <span id="output-age"></span></p>
+                        <p><strong>DNI:</strong> <span id="output-dni"></span></p>
+                        <p><strong>CUIL:</strong> <span id="output-cuit"></span></p>
+                    </div>
                     <p><strong>Nombre:</strong> <span id="output-first-name"></span></p>
                     <p><strong>Apellido:</strong> <span id="output-last-name"></span></p>
-                    <p><strong>DNI:</strong> <span id="output-dni"></span></p>
-                    <p><strong>CUIT:</strong> <span id="output-cuit"></span></p>
-                    <p><strong>Fecha de Nacimiento:</strong> <span id="output-birthdate"></span></p>
-                    <p><strong>Edad:</strong> <span id="output-age"></span></p>
-                    <p><strong>Sexo:</strong> <span id="output-gender"></span></p>
                     <p><strong>Domicilio:</strong> <span id="output-address"></span></p>
                     <p><strong>Correo Electrónico:</strong> <span id="output-email"></span></p>
                     <p><strong>Teléfono:</strong> <span id="output-phone"></span></p>
-                    <p><strong>Estado Civil:</strong> <span id="output-marital-status"></span></p>
                     <div id="output-experience">
                         <p><strong>Experiencia Laboral:</strong></p>
                     </div>

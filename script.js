@@ -10,25 +10,25 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
   document.getElementById("cv-title").textContent = `${firstName} ${lastName}`;
   document.getElementById("output-first-name").textContent = firstName;
   document.getElementById("output-last-name").textContent = lastName;
-  document.getElementById("output-dni").textContent =
-    document.getElementById("dni").value;
-  document.getElementById("output-cuit").textContent =
-    document.getElementById("cuit").value;
+  document.getElementById("output-nationality").textContent =
+    document.getElementById("nationality").value;
+  document.getElementById("output-marital-status").textContent =
+    document.getElementById("marital-status").value;
   document.getElementById("output-birthdate").textContent =
     document.getElementById("birthdate").value;
   document.getElementById("output-age").textContent = calculateAge(
     new Date(document.getElementById("birthdate").value)
   );
-  document.getElementById("output-gender").textContent =
-    document.getElementById("gender").value;
+  document.getElementById("output-dni").textContent =
+    document.getElementById("dni").value;
+  document.getElementById("output-cuit").textContent =
+    document.getElementById("cuit").value;
   document.getElementById("output-address").textContent =
     document.getElementById("address").value;
   document.getElementById("output-email").textContent =
     document.getElementById("email").value;
   document.getElementById("output-phone").textContent =
     document.getElementById("phone").value;
-  document.getElementById("output-marital-status").textContent =
-    document.getElementById("marital-status").value;
   document.getElementById("output-license").textContent =
     document.getElementById("license").value;
 
@@ -64,7 +64,7 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
       outputPhoto.style.objectFit = "cover";
       outputPhoto.style.borderRadius = "50%";
       outputPhoto.style.border = "1px solid #dee2e6";
-      outputPhoto.style.marginRight = "20px";
+      outputPhoto.style.margin = "0 auto";
     };
     reader.readAsDataURL(photoInput.files[0]);
   }
