@@ -1,0 +1,71 @@
+body {
+    background-color: #f8f9fa;
+}
+
+#cv-output {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.photo-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #dee2e6;
+    margin: 0 auto;
+}
+
+.education-field, .experience-field {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.left-column {
+    background-color: #00aaff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#output-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #dee2e6;
+    margin: 0 auto;
+}
+
+.cv-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.personal-info-box {
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.personal-info-box h3 {
+    background-color: #00aaff;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    margin: -15px -15px 10px -15px;
+}
+
+.right-column {
+    background-color: #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin-left: 15px; /* Agregar margen para la separación */
+}
