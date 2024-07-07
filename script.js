@@ -25,6 +25,8 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
     document.getElementById("cuit").value;
   document.getElementById("output-address").textContent =
     document.getElementById("address").value;
+  document.getElementById("output-postal-code").textContent =
+    document.getElementById("postal-code").value;
   document.getElementById("output-email").textContent =
     document.getElementById("email").value;
   document.getElementById("output-phone").textContent =
@@ -119,18 +121,23 @@ document.getElementById("save-pdf").addEventListener("click", function () {
   doc.text(`Sexo: ${document.getElementById("gender").value}`, 10, 80);
   doc.text(`Domicilio: ${document.getElementById("address").value}`, 10, 90);
   doc.text(
-    `Correo Electrónico: ${document.getElementById("email").value}`,
+    `Código Postal: ${document.getElementById("postal-code").value}`,
     10,
     100
   );
-  doc.text(`Teléfono: ${document.getElementById("phone").value}`, 10, 110);
+  doc.text(
+    `Correo Electrónico: ${document.getElementById("email").value}`,
+    10,
+    110
+  );
+  doc.text(`Teléfono: ${document.getElementById("phone").value}`, 10, 120);
   doc.text(
     `Estado Civil: ${document.getElementById("marital-status").value}`,
     10,
-    120
+    130
   );
 
-  let y = 130;
+  let y = 140;
   for (let i = 1; i <= experienceCount; i++) {
     const period = document.getElementById(`experience-period-${i}`).value;
     const job = document.getElementById(`experience-job-${i}`).value;
