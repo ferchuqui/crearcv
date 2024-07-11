@@ -69,3 +69,12 @@ body {
     border-radius: 5px;
     margin-left: 15px; /* Agregar margen para la separación */
 }
+.experience-title, .education-title{
+    text-align: center;
+}
+.experience-content, .education-content{
+    text-align: left;
+}
+.bold-text{
+    font-weight: bold;
+}

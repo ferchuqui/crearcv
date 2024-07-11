@@ -35,23 +35,23 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
     document.getElementById("license").value;
 
   const experienceOutput = document.getElementById("output-experience");
-  experienceOutput.innerHTML = "<p><strong>Experiencia Laboral:</strong></p>";
+  experienceOutput.innerHTML = "<p class='experience-title'><strong>Experiencia Laboral:</strong></p>";
   for (let i = 1; i <= experienceCount; i++) {
     const period = document.getElementById(`experience-period-${i}`).value;
     const job = document.getElementById(`experience-job-${i}`).value;
     const tasks = document.getElementById(`experience-tasks-${i}`).value;
     const phone = document.getElementById(`experience-phone-${i}`).value;
-    const experienceHtml = `<p>${job} (${period}): ${tasks}. Tel: ${phone}</p>`;
+    const experienceHtml = `<p class='experience-content'><span class='bold-text'>${job}</span>(${period}): ${tasks}. Tel: ${phone}</p>`;
     experienceOutput.innerHTML += experienceHtml;
   }
 
   const educationOutput = document.getElementById("output-education");
-  educationOutput.innerHTML = "<p><strong>Educación:</strong></p>";
+  educationOutput.innerHTML = "<p class='education-title'><strong>Educación:</strong></p>";
   for (let i = 1; i <= educationCount; i++) {
     const type = document.getElementById(`education-type-${i}`).value;
     const period = document.getElementById(`education-period-${i}`).value;
     const title = document.getElementById(`education-title-${i}`).value;
-    const educationHtml = `<p>${type}: ${title} (${period})</p>`;
+    const educationHtml = `<p class='education-content'><span class='bold-text'>${type}: ${title} </span>(${period})</p>`;
     educationOutput.innerHTML += educationHtml;
   }
 
