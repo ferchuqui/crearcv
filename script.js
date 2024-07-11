@@ -41,7 +41,7 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
     const job = document.getElementById(`experience-job-${i}`).value;
     const tasks = document.getElementById(`experience-tasks-${i}`).value;
     const phone = document.getElementById(`experience-phone-${i}`).value;
-    const experienceHtml = `<p class='experience-content'><span class='bold-text'>${job}</span>(${period}): ${tasks}. Tel: ${phone}</p>`;
+    const experienceHtml = `<p class='experience-content'><span class='bold-text'>${job}</span>(${period}): <br/> ${tasks}. Tel: ${phone}</p>`;
     experienceOutput.innerHTML += experienceHtml;
   }
 
@@ -51,7 +51,7 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
     const type = document.getElementById(`education-type-${i}`).value;
     const period = document.getElementById(`education-period-${i}`).value;
     const title = document.getElementById(`education-title-${i}`).value;
-    const educationHtml = `<p class='education-content'><span class='bold-text'>${type}: ${title} </span>(${period})</p>`;
+    const educationHtml = `<p class='education-content'><span class='bold-text'>${type}: <br/> ${title} </span>(${period})</p>`;
     educationOutput.innerHTML += educationHtml;
   }
 
