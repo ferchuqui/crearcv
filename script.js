@@ -75,8 +75,69 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
 });
 
 document.getElementById("print-cv").addEventListener("click", function () {
-  window.print();
+  const cvOutput = document.getElementById("cv-output").innerHTML;
+  const styles = `
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        #cv-output {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+        }
+
+        .photo-preview {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid #dee2e6;
+            margin: 0 auto;
+        }
+
+        .personal-info-box {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .personal-info-box h3 {
+            background-color: #00aaff;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            margin: -15px -15px 10px -15px;
+        }
+
+        .experience-title, .education-title {
+            text-align: center;
+        }
+
+        .experience-content, .education-content {
+            text-align: left;
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+    </style>
+    `;
+  const printWindow = window.open("", "", "height=600,width=800");
+  printWindow.document.write("<html><head><title>Imprimir CV</title>");
+  printWindow.document.write(styles);
+  printWindow.document.write("</head><body >");
+  printWindow.document.write('<div id="cv-output">' + cvOutput + "</div>");
+  printWindow.document.write("</body></html>");
+  printWindow.document.close();
+  printWindow.print();
 });
+
 
 document.getElementById("save-html").addEventListener("click", function () {
   const firstName = document.getElementById("first-name").value;

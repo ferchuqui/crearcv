@@ -78,3 +78,43 @@ body {
 .bold-text{
     font-weight: bold;
 }
+
+@media print {
+    body {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .left-column, .right-column {
+        float: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .right-column {
+        margin-left: 0;
+    }
+
+    .experience-title, .education-title {
+        text-align: center;
+    }
+
+    .experience-content, .education-content {
+        text-align: left;
+    }
+
+    .bold-text {
+        font-weight: bold;
+    }
+
+    .btn {
+        display: none;
+    }
+}
