@@ -75,163 +75,30 @@ document.getElementById("cv-form").addEventListener("submit", function (event) {
 });
 
 document.getElementById("print-cv").addEventListener("click", function () {
+  const name = document.getElementById("cv-title").innerText;
+  console.log(document.getElementById("cv-title"), document.getElementById("cv-title").innerText);
   const cvOutput = document.getElementById("cv-output").innerHTML;
   const styles = `
-    <style>
-        body {
-            background-color: #ffffff;
-            color: #000000;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        #cv-output {
-            background-color: #ffffff;
-            padding: 20px;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-        }
-
-        .photo-preview {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 1px solid #dee2e6;
-            margin: 0 auto;
-        }
-
-        .personal-info-box {
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
-
-        .personal-info-box h3 {
-            background-color: #00aaff;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px 5px 0 0;
-            margin: -15px -15px 10px -15px;
-        }
-
-        .experience-title, .education-title {
-            text-align: center;
-        }
-
-        .experience-content, .education-content {
-            text-align: left;
-        }
-
-        .bold-text {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     `;
   const printWindow = window.open("", "", "height=600,width=800");
-  printWindow.document.write("<html><head><title>Imprimir CV</title>");
-  printWindow.document.write(styles);
-  printWindow.document.write("</head><body >");
-  printWindow.document.write('<div id="cv-output">' + cvOutput + "</div>");
-  printWindow.document.write("</body></html>");
-  printWindow.document.close();
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>${name}.pdf</title>
+        ${styles}
+      </head>
+      <body >
+        ${cvOutput}
+      </div>
+    </html>
+    `);
+  printWindow.document.getElementById("buttons").style.display = "none";
   printWindow.print();
-});
-
-
-document.getElementById("save-html").addEventListener("click", function () {
-  const firstName = document.getElementById("first-name").value;
-  const lastName = document.getElementById("last-name").value;
-  const fileName = `${firstName}_${lastName}_cvauto.html`;
-
-  const cvContent = document.getElementById("cv-output").innerHTML;
-  const blob = new Blob([cvContent], { type: "text/html" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = fileName;
-  link.click();
-});
-
-document.getElementById("save-pdf").addEventListener("click", function () {
-  const firstName = document.getElementById("first-name").value;
-  const lastName = document.getElementById("last-name").value;
-  const fileName = `${firstName}_${lastName}_cvauto.pdf`;
-
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  doc.setFont("Nunito");
-  doc.setFontSize(24);
-  doc.text(`${firstName} ${lastName}`, 10, 10);
-
-  doc.setFontSize(12);
-  doc.text(`Nombre: ${firstName}`, 10, 20);
-  doc.text(`Apellido: ${lastName}`, 10, 30);
-  doc.text(`DNI: ${document.getElementById("dni").value}`, 10, 40);
-  doc.text(`CUIT: ${document.getElementById("cuit").value}`, 10, 50);
-  doc.text(
-    `Fecha de Nacimiento: ${document.getElementById("birthdate").value}`,
-    10,
-    60
-  );
-  doc.text(
-    `Edad: ${document.getElementById("output-age").textContent}`,
-    10,
-    70
-  );
-  doc.text(`Sexo: ${document.getElementById("gender").value}`, 10, 80);
-  doc.text(`Domicilio: ${document.getElementById("address").value}`, 10, 90);
-  doc.text(
-    `Código Postal: ${document.getElementById("postal-code").value}`,
-    10,
-    100
-  );
-  doc.text(
-    `Correo Electrónico: ${document.getElementById("email").value}`,
-    10,
-    110
-  );
-  doc.text(`Teléfono: ${document.getElementById("phone").value}`, 10, 120);
-  doc.text(
-    `Estado Civil: ${document.getElementById("marital-status").value}`,
-    10,
-    130
-  );
-
-  let y = 140;
-  for (let i = 1; i <= experienceCount; i++) {
-    const period = document.getElementById(`experience-period-${i}`).value;
-    const job = document.getElementById(`experience-job-${i}`).value;
-    const tasks = document.getElementById(`experience-tasks-${i}`).value;
-    const phone = document.getElementById(`experience-phone-${i}`).value;
-    doc.text(
-      `Experiencia ${i}: ${job} (${period}). Tareas: ${tasks}. Tel: ${phone}`,
-      10,
-      y
-    );
-    y += 10;
-  }
-
-  for (let i = 1; i <= educationCount; i++) {
-    const type = document.getElementById(`education-type-${i}`).value;
-    const period = document.getElementById(`education-period-${i}`).value;
-    const title = document.getElementById(`education-title-${i}`).value;
-    doc.text(`Educación ${i}: ${type}, ${title} (${period})`, 10, y);
-    y += 10;
-  }
-
-  doc.text(
-    `Posee Licencia de Conducir: ${document.getElementById("license").value}`,
-    10,
-    y
-  );
-
-  const photo = document.getElementById("output-photo");
-  if (photo.src) {
-    doc.addImage(photo.src, "JPEG", 10, y + 10, 50, 50);
-  }
-
-  doc.save(fileName);
 });
 
 document
