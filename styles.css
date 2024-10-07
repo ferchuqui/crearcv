@@ -6,8 +6,8 @@ body {
 
 #cv-output {
     background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #dee2e6;
+    /* padding: 20px; */
+    border: 1px solid #97cbff;
     border-radius: 10px;
 }
 
@@ -87,11 +87,104 @@ body {
   }
 
 
-@media print {
+  @media print {
     html, body {
+        background-color: #f8f9fa; /* Aplicar el mismo fondo */
         width: 210mm;
         overflow: hidden;
     }
+
+    #cv-output {
+        background-color: #ffffff;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+    }
+
+    .photo-preview, #output-photo {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid #dee2e6;
+        margin: 0 auto;
+    }
+
+    .education-field, .experience-field {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+/*     .left-column, .right-column {
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #ccc; /* Asegurar que se mantenga el color */
+    } */
+
+    .left-column {
+        width: 33%;
+        float: left;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #ccc;
+    }
+
+    .right-column {
+        border-radius: 5px;
+        width: 65%;
+        float: left;
+        margin-left: 2%;
+        background-color: #ccc;
+    }
+
+    .personal-info-box {
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+
+    .personal-info-box h3 {
+        background-color: #00aaff;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        margin: -15px -15px 10px -15px;
+    }
+
+    .cv-title {
+        font-family: 'Nunito', sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .cv-container {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .full-print-height {
+        min-height: 297mm;
+        height: auto;
+    }
+
+    .experience-title, .education-title {
+        text-align: center;
+    }
+
+    .experience-content, .education-content {
+        text-align: left;
+    }
+
+    .bold-text {
+        font-weight: bold;
+    }
+
+    /* Mantener las columnas */
     .col-print-1 {width:8%;  float:left;}
     .col-print-2 {width:16%; float:left;}
     .col-print-3 {width:25%; float:left;}
@@ -104,19 +197,4 @@ body {
     .col-print-10{width:83%; float:left;}
     .col-print-11{width:92%; float:left;}
     .col-print-12{width:100%; float:left;}
-
-    .full-print-height {
-        /* height: 100vh; */
-        min-height: 297mm;
-        height: auto;
-    }
-
-    .cv-container {
-        height: 100%;
-        flex-wrap: nowrap;
-    }
-
-    *, ::after, ::before {
-        box-sizing: content-box;
-    }
 }
